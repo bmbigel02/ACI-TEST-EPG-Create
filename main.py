@@ -78,17 +78,6 @@ with open('myvlans.csv') as csvfile:
         epg.add_infradomain(vmmdom1)
         epg.add_infradomain(vmmdom2)
 
-        # Create the physical interface object
-        intf = Interface(interface['type'],
-                             interface['pod'],
-                             interface['node'],
-                             interface['module'],
-                             interface['port'])
-
-        # Create a VLAN interface and attach to the physical interface
-        VLAN = {'name': 'vlan5',
-                'encap_type': 'vlan',
-                'encap_id': vlan_id}
 
         #print VLAN
         vlan_intf = L2Interface(VLAN['name'], VLAN['encap_type'], VLAN['encap_id'])
