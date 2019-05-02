@@ -79,14 +79,6 @@ with open('myvlans.csv') as csvfile:
         epg.add_infradomain(vmmdom2)
 
 
-        #print VLAN
-        vlan_intf = L2Interface(VLAN['name'], VLAN['encap_type'], VLAN['encap_id'])
-        vlan_intf.attach(intf)
-
-        # Attach the EPG to the VLAN interface
-        epg.attach(vlan_intf)
-
-
         # Create a Context and BridgeDomain and place them in the common tenant
         context = Context('default', shared_tenant)
         bd = BridgeDomain("" + vlan_name + "_BD",shared_tenant)
