@@ -56,7 +56,7 @@ interface = {'type': 'eth',
              'pod': '1', 'node': '101', 'module': '1', 'port': '65'}
 
 # Create the EPG Tenant
-tenant = Tenant('BIGOTEST')
+tenant = Tenant('BIGOTEST_ONOVA')
 shared_tenant = Tenant('common')
 
 # Create the Application Profile
