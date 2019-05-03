@@ -31,9 +31,9 @@ from acitoolkit.acitoolkit import *
 import csv
 
 """
-Create a tenant with a single EPG and assign it statically to 2 interfaces.
-This is the minimal configuration necessary to enable packet forwarding
-within the ACI fabric.
+Create endpoint groups and Bridge Domains read in from a file
+Place EPG in specified tenant
+Place BDs in common tenant
 """
 
 # Get the APIC login credentials
@@ -52,13 +52,9 @@ dom = EPGDomain.get_by_name(session, 'phys')
 vmmdom1 = EPGDomain.get_by_name(session, 'Fin_A')
 vmmdom2 = EPGDomain.get_by_name(session, 'Fin_B')
 
-interface = {'type': 'eth',
-             'pod': '1', 'node': '101', 'module': '1', 'port': '65'}
-
 # Create the EPG Tenant
-tenant = Tenant('BIGOTEST_ONOVA')
+tenant = Tenant('biggie')
 shared_tenant = Tenant('common')
-
 # Create the Application Profile
 app = AppProfile('myapp', tenant)
 
@@ -78,10 +74,9 @@ with open('myvlans.csv') as csvfile:
         epg.add_infradomain(vmmdom1)
         epg.add_infradomain(vmmdom2)
 
-
         # Create a Context and BridgeDomain and place them in the common tenant
         context = Context('default', shared_tenant)
-        bd = BridgeDomain("" + vlan_name + "_BD",shared_tenant)
+        bd = BridgeDomain("" + str(vlan_name) + "_BD",shared_tenant)
         bd.set_arp_flood('yes')
         bd.set_unicast_route('no')
         bd.add_context(context)
@@ -92,16 +87,31 @@ with open('myvlans.csv') as csvfile:
         epg.add_bd(bd)
 
 
+        # Get the APIC login credentials
+        description = 'acitoolkit tutorial application'
+        creds = Credentials('apic', description)
+        creds.add_argument('--delete', action='store_true',
+                                 help='Delete the configuration from the APIC')
+        args = creds.get()
+
+        #push the config
+        session = Session(args.url, args.login, args.password)
+        session.login()
         resp = tenant.push_to_apic(session)
+
         if resp.ok:
-            print 'Success'
+            print 'Tenant Success'
         else:
-            print 'Failure'
+            print 'Tenant Failure'
         print 'Pushed the following JSON to the APIC'
         print 'URL:', tenant.get_url()
         print 'JSON:', tenant.get_json()
 
-
+        common_resp = shared_tenant.push_to_apic(session)
+        if common_resp.ok:
+            print 'Common Success'
+        else:
+            print 'Common Failure'
 
 
 
