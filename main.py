@@ -48,15 +48,15 @@ session = Session(args.url, args.login, args.password)
 session.login()
 
 #define global varibles
-dom = EPGDomain.get_by_name(session, 'phys')
-vmmdom1 = EPGDomain.get_by_name(session, 'Fin_A')
-vmmdom2 = EPGDomain.get_by_name(session, 'Fin_B')
+dom = EPGDomain.get_by_name(session, 'L2-OUT')
+vmmdom1 = EPGDomain.get_by_name(session, 'HS-AVE')
+vmmdom2 = EPGDomain.get_by_name(session, 'TD-AVE')
 
 # Create the EPG Tenant
-tenant = Tenant('biggie')
+tenant = Tenant('TCU-PROD')
 shared_tenant = Tenant('common')
 # Create the Application Profile
-app = AppProfile('myapp', tenant)
+app = AppProfile('NETWORK-AP', tenant)
 
 with open('myvlans.csv') as csvfile:
     file = csv.reader(csvfile, delimiter=',', quotechar='|')

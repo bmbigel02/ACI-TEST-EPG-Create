@@ -3,7 +3,6 @@
 1255,TD_1255_NAT-DMZ
 193,TD_193_Network-Mgmt-Servers
 194,TD_194_Network-Management
-196,TD_196_Server-Management
 20,TD_20_NO-NAT-DMZ
 224,TD_224_Storage-Management
 232,TD_232_Servers1
@@ -54,7 +53,6 @@
 192,HS_192_DMZ-MGMT
 193,HS_193_Network-Mgmt-Servers
 194,HS_194_Network-Management
-196,HS_196_Server-Management
 20,HS_20_NO-NAT-DMZ
 224,HS_224_Storage-Management
 244,HS_244_VDI
