@@ -49,8 +49,8 @@ session.login()
 
 #define global varibles
 #dom = EPGDomain.get_by_name(session, 'L2-OUT')
-vmmdom1 = EPGDomain.get_by_name(session, 'HS-AVE')
-vmmdom2 = EPGDomain.get_by_name(session, 'TD-AVE')
+#vmmdom1 = EPGDomain.get_by_name(session, 'HS-AVE')
+#vmmdom2 = EPGDomain.get_by_name(session, 'TD-AVE')
 
 # Create the EPG Tenant
 tenant = Tenant('TCU-PROD')
@@ -71,8 +71,8 @@ with open('myvlans.csv') as csvfile:
 
         #add domains
         #epg.add_infradomain(dom)
-        epg.add_infradomain(vmmdom1)
-        epg.add_infradomain(vmmdom2)
+        #epg.add_infradomain(vmmdom1)
+        #epg.add_infradomain(vmmdom2)
 
         # Create a Context and BridgeDomain and place them in the common tenant
         context = Context('default', shared_tenant)
