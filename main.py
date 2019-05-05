@@ -46,8 +46,8 @@ creds.add_argument('--delete', action='store_true',
 args = creds.get()
 
 # pull domain info
-session = Session(args.url, args.login, args.password,verify_ssl=False)
-session.login()
+#session = Session(args.url, args.login, args.password,verify_ssl=False)
+#session.login()
 
 #define global varibles
 #dom = EPGDomain.get_by_name(session, 'L2-OUT')
