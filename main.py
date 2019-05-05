@@ -48,7 +48,7 @@ session = Session(args.url, args.login, args.password)
 session.login()
 
 #define global varibles
-dom = EPGDomain.get_by_name(session, 'L2-OUT')
+#dom = EPGDomain.get_by_name(session, 'L2-OUT')
 vmmdom1 = EPGDomain.get_by_name(session, 'HS-AVE')
 vmmdom2 = EPGDomain.get_by_name(session, 'TD-AVE')
 
@@ -70,7 +70,7 @@ with open('myvlans.csv') as csvfile:
         print "making epg and bridge domain combo " + (vlan_name)
 
         #add domains
-        epg.add_infradomain(dom)
+        #epg.add_infradomain(dom)
         epg.add_infradomain(vmmdom1)
         epg.add_infradomain(vmmdom2)
 
