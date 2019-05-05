@@ -46,7 +46,7 @@ creds.add_argument('--delete', action='store_true',
 args = creds.get()
 
 # pull domain info
-session = Session(args.url, args.login, args.password)
+session = Session(args.url, args.login, args.password,verify_ssl=False)
 session.login()
 
 #define global varibles
@@ -97,7 +97,7 @@ with open('myvlans.csv') as csvfile:
         args = creds.get()
 
         #push the config
-        session = Session(args.url, args.login, args.password)
+        session = Session(args.url, args.login, args.password,verify_ssl=False)
         session.login()
         resp = tenant.push_to_apic(session)
 
