@@ -29,6 +29,8 @@
 ################################################################################
 from acitoolkit.acitoolkit import *
 import csv
+import requests
+requests.packages.urllib3.disable_warnings()
 
 """
 Create endpoint groups and Bridge Domains read in from a file
