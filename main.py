@@ -97,7 +97,7 @@ with open('myvlans.csv') as csvfile:
                                  help='Delete the configuration from the APIC')
         args = creds.get()
 
-        #push the config
+        #push the configs
         session = Session(args.url, args.login, args.password, verify_ssl=False)
         session.login()
         resp = tenant.push_to_apic(session)
