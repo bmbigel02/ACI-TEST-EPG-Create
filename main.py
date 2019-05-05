@@ -28,6 +28,7 @@
 #                                                                              #
 ################################################################################
 from acitoolkit.acitoolkit import *
+from acitoolkit.acisession import *
 import csv
 import requests
 requests.packages.urllib3.disable_warnings()
@@ -97,7 +98,7 @@ with open('myvlans.csv') as csvfile:
         args = creds.get()
 
         #push the config
-        session = Session(args.url, args.login, args.password,verify_ssl = False)
+        session = Session(args.url, args.login, args.password,verify_ssl=False)
         session.login()
         resp = tenant.push_to_apic(session)
 
