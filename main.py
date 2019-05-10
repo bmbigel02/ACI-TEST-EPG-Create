@@ -28,7 +28,7 @@
 #                                                                              #
 ################################################################################
 from acitoolkit.acitoolkit import *
-from acitoolkit.acisession import *
+
 import csv
 import requests
 requests.packages.urllib3.disable_warnings()

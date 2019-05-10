@@ -1,3 +1,3 @@
 LOGIN    = "admin"
-PASSWORD = "C1sc0123"
-URL      = "https://10.254.194.249/"
+PASSWORD = "S3nt1n3!"
+URL      = "https://10.255.255.62/"
